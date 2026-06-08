@@ -1142,6 +1142,7 @@ p  { color: #444; margin-bottom: 1rem; }
   .hero-sub { font-size: 0.94rem; margin-bottom: 32px; }
   .hero-actions { flex-direction: column; align-items: center; gap: 12px; }
   .hero-actions .btn { width: 100%; max-width: 320px; }
+  .hero-scroll { display: none; }
 
   /* Navbar — always show gradient so logo/hamburger readable */
   .navbar:not(.scrolled) {
