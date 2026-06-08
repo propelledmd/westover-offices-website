@@ -9,20 +9,29 @@ window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
 // ── Mobile nav toggle ──
-const toggle = document.getElementById('navToggle');
-const menu   = document.getElementById('navMenu');
+const toggle   = document.getElementById('navToggle');
+const menu     = document.getElementById('navMenu');
+const backdrop = document.createElement('div');
+backdrop.className = 'nav-backdrop';
+document.body.appendChild(backdrop);
+
+const closeNav = () => {
+  menu.classList.remove('open');
+  toggle.classList.remove('open');
+  backdrop.classList.remove('open');
+  document.body.style.overflow = '';
+};
+
 if (toggle && menu) {
   toggle.addEventListener('click', () => {
     const isOpen = menu.classList.toggle('open');
     toggle.classList.toggle('open', isOpen);
+    backdrop.classList.toggle('open', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
-  document.addEventListener('click', (e) => {
-    if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-      menu.classList.remove('open');
-      toggle.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+  backdrop.addEventListener('click', closeNav);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNav();
   });
 }
 
@@ -34,7 +43,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      if (menu) { menu.classList.remove('open'); toggle.classList.remove('open'); document.body.style.overflow = ''; }
+      closeNav();
     }
   });
 });
