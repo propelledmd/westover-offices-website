@@ -1287,40 +1287,52 @@ p  { color: #444; margin-bottom: 1rem; }
   .nav-menu > li:first-child { margin-top: 80px; }
   .nav-menu.open { transform: translateX(0); }
   .nav-toggle { display: flex; }
-  .nav-menu { -webkit-tap-highlight-color: transparent; }
+  .nav-menu { -webkit-tap-highlight-color: transparent; align-items: stretch; }
+
+  /* Each top-level menu item gets the divider */
+  .nav-menu > li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .nav-menu > li.nav-phone-group { border-bottom: none; }
+
   .nav-link {
+    display: block;
     width: 100%;
     padding: 20px 22px;
     font-size: 1.05rem;
     border-radius: 0;
+    border-bottom: none;
     letter-spacing: 0.3px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
-  .nav-link:active { background: rgba(140,123,94,0.18) !important; color: var(--gold-light) !important; }
+  .nav-link:active { background: rgba(140,123,94,0.18); color: var(--gold-light); }
   .nav-link.active { color: var(--gold-light); }
+
+  /* Dropdown — indented under For Sale */
   .dropdown {
     position: static;
     opacity: 1;
     visibility: visible;
     transform: none;
-    background: rgba(255,255,255,0.03);
-    padding: 4px 0 10px 0;
-    margin: 0 20px 4px 32px;
+    background: transparent;
+    padding: 0 0 12px 0;
+    margin: 0 0 0 22px;
     box-shadow: none;
     border-top: none;
     border-left: 2px solid rgba(140,123,94,0.4);
     border-radius: 0;
     min-width: unset;
   }
+  .dropdown li { border-bottom: none; }
   .dropdown a {
-    padding: 13px 16px;
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.6);
+    display: block;
+    padding: 14px 18px;
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.62);
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
-    border-bottom: none;
   }
   .dropdown a:active { color: var(--gold-light); background: rgba(140,123,94,0.12); }
   .nav-phone-group {
