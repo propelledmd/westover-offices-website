@@ -1118,27 +1118,65 @@ p  { color: #444; margin-bottom: 1rem; }
   letter-spacing: 0.5px;
 }
 
-/* ── MOBILE HERO DEPTH ── */
+/* ── MOBILE IMPROVEMENTS ── */
 @media (max-width: 768px) {
+  /* Hero — aerial fallback always visible, deep cinematic overlay */
   .hero {
     height: 100dvh;
     min-height: 600px;
+    background: url('../Westover Offices Website Assets/Website Images/Westover Aerial.jpg') center/cover no-repeat;
   }
   .hero-overlay {
     background:
-      radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.45) 100%),
+      radial-gradient(ellipse at 50% 60%, transparent 25%, rgba(0,0,0,0.42) 100%),
       linear-gradient(180deg,
-        rgba(0,0,0,0.55) 0%,
-        rgba(0,0,0,0.15) 30%,
-        rgba(0,0,0,0.15) 55%,
-        rgba(0,0,0,0.78) 100%
+        rgba(0,0,0,0.62) 0%,
+        rgba(0,0,0,0.18) 28%,
+        rgba(0,0,0,0.18) 58%,
+        rgba(0,0,0,0.80) 100%
       );
   }
   .hero-content { padding: 0 24px; }
-  .hero-address { font-size: 0.65rem; letter-spacing: 3px; margin-bottom: 18px; }
+  .hero-address { font-size: 0.64rem; letter-spacing: 3px; margin-bottom: 18px; }
   .hero h1 { margin-bottom: 16px; }
-  .hero-sub { font-size: 0.96rem; margin-bottom: 32px; }
-  .hero-actions .btn { padding: 15px 28px; width: 100%; max-width: 320px; }
+  .hero-sub { font-size: 0.94rem; margin-bottom: 32px; }
+  .hero-actions { flex-direction: column; align-items: center; gap: 12px; }
+  .hero-actions .btn { width: 100%; max-width: 320px; }
+
+  /* Navbar — always show gradient so logo/hamburger readable */
+  .navbar:not(.scrolled) {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, transparent 100%);
+    padding: 16px 0;
+  }
+  .navbar.scrolled { padding: 10px 0; }
+  .nav-logo img { height: 38px; }
+  .nav-toggle {
+    padding: 10px 8px;
+  }
+  .nav-toggle span { width: 26px; height: 2.5px; gap: 6px; }
+
+  /* Stats bar — horizontal scroll strip on mobile */
+  .stats-bar { padding: 0; overflow: hidden; }
+  .stats-grid {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: 0;
+    grid-template-columns: unset;
+    padding: 0;
+  }
+  .stats-grid::-webkit-scrollbar { display: none; }
+  .stat {
+    flex: 0 0 auto;
+    min-width: 44vw;
+    padding: 28px 20px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    border-bottom: none;
+  }
+  .stat:last-child { border-right: 1px solid rgba(255,255,255,0.1); }
+  .stat-num { font-size: 1.75rem; }
+  .stat-lbl { font-size: 0.64rem; letter-spacing: 1.5px; }
 
   /* Section spacing */
   .overview, .video-section { padding: 72px 0; }
@@ -1147,28 +1185,23 @@ p  { color: #444; margin-bottom: 1rem; }
   .contact { padding: 72px 0; }
   .ownership-section { padding: 60px 0; }
 
-  /* Stats bar — show numbers bigger on mobile */
-  .stats-bar { padding: 28px 0; }
-  .stat-num { font-size: 1.6rem; }
-  .stat-lbl { font-size: 0.65rem; letter-spacing: 1.5px; }
-
   /* Overview image shorter on mobile */
   .overview-img-wrap { aspect-ratio: 16/9; }
 
-  /* Location cards — better padding */
+  /* Location cards */
   .loc-card { padding: 28px 22px; }
 
-  /* Building cards on mobile */
+  /* Building cards */
   .bldg-info { padding: 20px; }
   .bldg-info h3 { font-size: 1.1rem; }
 
   /* Building detail hero */
   .bldg-hero { height: 52vh; min-height: 340px; }
 
-  /* Site plan on building pages */
+  /* Site plan */
   .site-plan-img-wrap { margin-top: 24px; }
 
-  /* Contact form box */
+  /* Contact */
   .contact-form-box { padding: 28px 22px; }
 
   /* Brochure CTA */
@@ -1245,15 +1278,16 @@ p  { color: #444; margin-bottom: 1rem; }
     flex-shrink: 0;
     z-index: 1;
   }
-  .nav-menu > li:first-child { margin-top: 72px; }
+  .nav-menu > li:first-child { margin-top: 80px; }
   .nav-menu.open { transform: translateX(0); }
   .nav-toggle { display: flex; }
   .nav-link {
     width: 100%;
-    padding: 13px 20px;
-    font-size: 0.9rem;
+    padding: 17px 22px;
+    font-size: 1rem;
     border-radius: 0;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
   .nav-link:hover, .nav-link.active {
     background: rgba(140,123,94,0.12);
