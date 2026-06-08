@@ -149,6 +149,38 @@ if (form) {
   });
 }
 
+// ── Mobile stats auto-scroll ──
+if (window.matchMedia('(max-width: 768px)').matches) {
+  const statsGrid = document.querySelector('.stats-grid');
+  if (statsGrid) {
+    const SPEED = 38; // px per second
+    let isPaused = false;
+    let lastTime = null;
+
+    const tick = (timestamp) => {
+      if (!isPaused) {
+        if (lastTime !== null) {
+          const px = SPEED * (timestamp - lastTime) / 1000;
+          if (statsGrid.scrollLeft + statsGrid.clientWidth >= statsGrid.scrollWidth - 2) {
+            statsGrid.scrollTo({ left: 0, behavior: 'smooth' });
+            isPaused = true;
+            setTimeout(() => { isPaused = false; lastTime = null; }, 1800);
+          } else {
+            statsGrid.scrollLeft += px;
+          }
+        }
+        lastTime = timestamp;
+      }
+      requestAnimationFrame(tick);
+    };
+
+    statsGrid.addEventListener('touchstart', () => { isPaused = true; lastTime = null; }, { passive: true });
+    statsGrid.addEventListener('touchend',   () => { setTimeout(() => { isPaused = false; }, 3000); }, { passive: true });
+
+    requestAnimationFrame(tick);
+  }
+}
+
 // ── Scroll fade-in ──
 const fadeItems = document.querySelectorAll('.fade-up, .bldg-card, .loc-card, .stat');
 if (fadeItems.length) {

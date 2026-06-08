@@ -1156,7 +1156,22 @@ p  { color: #444; margin-bottom: 1rem; }
   .nav-toggle span { width: 26px; height: 2.5px; gap: 6px; }
 
   /* Stats bar — horizontal scroll strip on mobile */
-  .stats-bar { padding: 0; overflow: hidden; }
+  .stats-bar {
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .stats-bar::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 64px;
+    background: linear-gradient(to right, transparent, var(--charcoal));
+    pointer-events: none;
+    z-index: 2;
+  }
   .stats-grid {
     display: flex;
     overflow-x: auto;
