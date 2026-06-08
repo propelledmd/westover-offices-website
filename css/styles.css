@@ -1213,6 +1213,12 @@ p  { color: #444; margin-bottom: 1rem; }
   .footer-grid { gap: 32px; }
 }
 
+/* Disable sticky hover on touch devices */
+@media (hover: none) and (max-width: 768px) {
+  .nav-link:hover { background: none; color: rgba(255,255,255,0.88); }
+  .dropdown a:hover { background: none; color: rgba(255,255,255,0.6); padding-left: 16px; }
+}
+
 /* ── SCROLL ANIMATIONS ── */
 .fade-up {
   opacity: 0;
@@ -1292,11 +1298,7 @@ p  { color: #444; margin-bottom: 1rem; }
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
-  /* Only highlight on actual hover (desktop), not touch */
-  @media (hover: hover) {
-    .nav-link:hover { background: rgba(140,123,94,0.12); color: var(--gold-light); }
-  }
-  .nav-link:active { background: rgba(140,123,94,0.18); color: var(--gold-light); }
+  .nav-link:active { background: rgba(140,123,94,0.18) !important; color: var(--gold-light) !important; }
   .nav-link.active { color: var(--gold-light); }
   .dropdown {
     position: static;
@@ -1319,9 +1321,6 @@ p  { color: #444; margin-bottom: 1rem; }
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
     border-bottom: none;
-  }
-  @media (hover: hover) {
-    .dropdown a:hover { color: var(--gold-light); background: rgba(140,123,94,0.1); padding-left: 20px; }
   }
   .dropdown a:active { color: var(--gold-light); background: rgba(140,123,94,0.12); }
   .nav-phone-group {
