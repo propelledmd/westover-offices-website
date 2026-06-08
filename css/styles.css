@@ -1186,10 +1186,10 @@ p  { color: #444; margin-bottom: 1rem; }
     flex: 0 0 auto;
     min-width: 44vw;
     padding: 28px 20px;
-    border-right: 1px solid rgba(255,255,255,0.1);
+    border-right: none;
     border-bottom: none;
   }
-  .stat:last-child { border-right: 1px solid rgba(255,255,255,0.1); }
+  .stat:last-child { border-right: none; }
   .stat-num { font-size: 1.75rem; }
   .stat-lbl { font-size: 0.64rem; letter-spacing: 1.5px; }
 
@@ -1386,7 +1386,7 @@ p  { color: #444; margin-bottom: 1rem; }
   .bldg-grid { grid-template-columns: 1fr 1fr; }
   .sold-grid { grid-template-columns: repeat(3, 1fr); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .stats-grid .stat { border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .stats-grid .stat { border-right: none; border-bottom: none; }
   .stats-grid .stat:nth-child(2n) { border-right: none; }
   .contact-grid { grid-template-columns: 1fr; gap: 44px; }
   .brochure-inner { flex-direction: column; text-align: center; }
